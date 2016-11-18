@@ -1,0 +1,25 @@
+{
+    "name": "sonicmoov/media-api-sdk-php",
+    "homepage": "https://github.com/sonicmoov/media-api-sdk-php",
+    "description": "Sonicmoov Media API SDK for PHP",
+    "keywords": [ "sonicmoov", "sdk" ],
+    "type": "library",
+    "license": "MIT",
+    "authors":[
+        {
+            "name": "Toshiyuki Ienaga",
+            "email": "thomas@sonicmoov.com"
+        }
+    ],
+    "require": {
+        "ienaga/simple-api-client": "*"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "4.8.*"
+    },
+    "autoload": {
+        "psr-4": {
+            "MediaDivision\\SDK\\": "src/"
+        }
+    }
+}
