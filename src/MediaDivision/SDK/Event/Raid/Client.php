@@ -1,17 +1,18 @@
 <?php
 
-namespace MediaDivision\SDK\Gacha;
+namespace MediaDivision\SDK\Event\Raid;
 
-require_once __DIR__ . "/../BaseClient.php";
+require_once __DIR__ . "/../../BaseClient.php";
 
 use  MediaDivision\SDK\BaseClient;
 
 class Client extends BaseClient
 {
+
     /**
      * @var string
      */
-    const BASE_PATH = "/api/gacha";
+    const BASE_PATH = "/api/event/raid";
 
 
     public function one()
@@ -20,26 +21,6 @@ class Client extends BaseClient
     }
 
     public function all()
-    {
-
-    }
-
-    public function lottery()
-    {
-
-    }
-
-    public function execute()
-    {
-
-    }
-
-    public function result()
-    {
-
-    }
-
-    public function log()
     {
 
     }
@@ -58,4 +39,5 @@ class Client extends BaseClient
     {
 
     }
+
 }

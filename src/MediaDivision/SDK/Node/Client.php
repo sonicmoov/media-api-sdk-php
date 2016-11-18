@@ -13,10 +13,16 @@ class Client extends BaseClient
      */
     const BASE_PATH = "/api/client/node";
 
-
-    public function get()
+    /**
+     * @param  int $node_id
+     * @return array
+     */
+    public function get($node_id)
     {
-
+        return $this
+            ->setPath(self::BASE_PATH)
+            ->addParameter("id", $node_id)
+            ->send();
     }
 
     /**
@@ -31,8 +37,8 @@ class Client extends BaseClient
             ->setMethod("POST")
             ->setPath(self::BASE_PATH)
             ->addQuery("client_id", $client_id)
-            ->addQuery("account", $account)
-            ->addQuery("password", $password)
+            ->addQuery("account",   $account)
+            ->addQuery("password",  $password)
             ->send();
     }
 
@@ -43,11 +49,10 @@ class Client extends BaseClient
      */
     public function update($node_id, $update = array())
     {
-        $query = array_merge(array("id" => $node_id), $update);
         return $this
             ->setMethod("PUT")
             ->setPath(self::BASE_PATH)
-            ->setQuery($query)
+            ->setQuery(array_merge(array("id" => $node_id), $update))
             ->send();
     }
 
@@ -59,7 +64,8 @@ class Client extends BaseClient
     {
         return $this
             ->setMethod("PUT")
-            ->setPath(self::BASE_PATH."/".$node_id)
+            ->setPath(self::BASE_PATH)
+            ->addParameter("id", $node_id)
             ->send();
     }
 }
