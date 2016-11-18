@@ -5,7 +5,6 @@ namespace MediaDivision\SDK;
 use \SimpleApi\Client;
 use \Exception;
 
-
 class BaseClient extends Client
 {
 
@@ -35,6 +34,47 @@ class BaseClient extends Client
     protected $password = "";
 
     /**
+     * @var Client
+     */
+    protected static $singleton = null;
+
+    /**
+     * Client constructor.
+     * @param array $config
+     */
+    public function __construct($config = array())
+    {
+        parent::__construct($config);
+
+        if (isset($config["client_id"])) {
+            $this->setClientId($config["client_id"]);
+        }
+
+        if (isset($config["account"])) {
+            $this->setClientId($config["account"]);
+        }
+
+        if (isset($config["password"])) {
+            $this->setClientId($config["password"]);
+        }
+
+        // init
+        $this->initialize();
+    }
+
+    /**
+     * @param  array $config
+     * @return Client
+     */
+    public static function factory($config = array())
+    {
+        if (self::$singleton === null) {
+            self::$singleton = new static($config);
+        }
+        return self::$singleton;
+    }
+
+    /**
      * @return null|string
      */
     public function getToken()
@@ -42,6 +82,9 @@ class BaseClient extends Client
         return $this->token;
     }
 
+    /**
+     * @param null $token
+     */
     public function setToken($token = null)
     {
         $this->token = $token;
@@ -102,7 +145,7 @@ class BaseClient extends Client
     {
         // valid
         if (!$this->getClientId() ||
-            !$this->getAccount() ||
+            !$this->getAccount()  ||
             !$this->getPassword() ||
             !$this->getEndPoint()
         ) {
@@ -113,7 +156,7 @@ class BaseClient extends Client
 
         $response = $this
             ->setPath(self::TOKEN_PATH)
-            ->setMethod("POST")
+            ->setMethod("PUT")
             ->add("client_id", $this->getClientId())
             ->add("account", $this->getAccount())
             ->add("password", $this->getPassword())

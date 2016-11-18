@@ -1,54 +1,45 @@
 <?php
 
-namespace MediaDivision\SDK;
+namespace MediaDivision\SDK\Gacha;
 
-require_once __DIR__ . "../BaseClient.php";
+require_once __DIR__ . "/../BaseClient.php";
+
+use  MediaDivision\SDK\BaseClient;
 
 class Client extends BaseClient
 {
-
     /**
-     * @var Client
+     * @var string
      */
-    protected static $singleton = null;
+    const BASE_PATH = "/api/gacha";
 
-    /**
-     * Client constructor.
-     * @param array $config
-     */
-    public function __construct($config = array())
-    {
-        parent::__construct($config);
-
-        if (isset($config["client_id"])) {
-            $this->setClientId($config["client_id"]);
-        }
-
-        if (isset($config["account"])) {
-            $this->setClientId($config["account"]);
-        }
-
-        if (isset($config["password"])) {
-            $this->setClientId($config["password"]);
-        }
-
-        // init
-        $this->initialize();
-    }
-
-    /**
-     * @param  array $config
-     * @return Client
-     */
-    public static function factory($config = array())
-    {
-        if (self::$singleton === null) {
-            self::$singleton = new static($config);
-        }
-        return self::$singleton;
-    }
 
     public function get()
+    {
+
+    }
+
+    public function gets()
+    {
+
+    }
+
+    public function lottery()
+    {
+
+    }
+
+    public function execute()
+    {
+
+    }
+
+    public function result()
+    {
+
+    }
+
+    public function log()
     {
 
     }
