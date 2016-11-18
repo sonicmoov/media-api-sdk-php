@@ -1,4 +1,4 @@
-# Sonicmoov Media API SDK
+# Sonicmoov Media API SDK for PHP
 
 
 
@@ -7,7 +7,7 @@
 ```json
 {
     "require": {
-       "sonicmoov/media-api-sdk": "*"
+       "sonicmoov/media-api-sdk-php": "*"
     }
 }
 ```
