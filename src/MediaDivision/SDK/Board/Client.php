@@ -1,6 +1,6 @@
 <?php
 
-namespace MediaDivision\SDK\Event;
+namespace MediaDivision\SDK\Board;
 
 require_once __DIR__ . "/../BaseClient.php";
 
@@ -12,8 +12,7 @@ class Client extends BaseClient
     /**
      * @var string
      */
-    const BASE_PATH = "/api/event";
-
+    const BASE_PATH = "/api/board";
 
     public function one()
     {

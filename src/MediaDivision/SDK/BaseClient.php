@@ -157,16 +157,14 @@ class BaseClient extends Client
         $response = $this
             ->setPath(self::TOKEN_PATH)
             ->setMethod("PUT")
-            ->add("client_id", $this->getClientId())
-            ->add("account", $this->getAccount())
-            ->add("password", $this->getPassword())
+            ->addQuery("client_id", $this->getClientId())
+            ->addQuery("account",   $this->getAccount())
+            ->addQuery("password",  $this->getPassword())
             ->send();
 
         // set token
         if (isset($response["response"]) && isset($response["response"]["access_token"])) {
-            $this->setToken($response["response"]["access_token"]);
+            $this->setToken((string) $response["response"]["access_token"]);
         }
     }
-
-
 }
