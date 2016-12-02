@@ -9,7 +9,7 @@ class Client extends BaseClient
     /**
      * @return array
      */
-    public function send()
+    public function execute()
     {
         return $this
             ->addHeader("Authorization", $this->getToken())

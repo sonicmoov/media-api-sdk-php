@@ -141,8 +141,8 @@ class BaseClient extends Client
         $response = $this
             ->setPath(self::TOKEN_PATH)
             ->setMethod(self::TOKEN_METHOD)
-            ->addQuery("account",  $this->getAccount())
-            ->addQuery("password", $this->getPassword())
+            ->addBody("account",  $this->getAccount())
+            ->addBody("password", $this->getPassword())
             ->send();
 
         // set token
