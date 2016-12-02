@@ -11,7 +11,12 @@ class BaseClient extends Client
     /**
      * @var string
      */
-    const TOKEN_PATH = "/api/token/refresh";
+    const TOKEN_PATH = "/api/token";
+
+    /**
+     * @var string
+     */
+    const TOKEN_METHOD = "PUT";
 
     /**
      * @var null|string
@@ -46,16 +51,12 @@ class BaseClient extends Client
     {
         parent::__construct($config);
 
-        if (isset($config["client_id"])) {
-            $this->setClientId($config["client_id"]);
-        }
-
         if (isset($config["account"])) {
-            $this->setClientId($config["account"]);
+            $this->setAccount($config["account"]);
         }
 
         if (isset($config["password"])) {
-            $this->setClientId($config["password"]);
+            $this->setPassword($config["password"]);
         }
 
         // init
@@ -88,22 +89,6 @@ class BaseClient extends Client
     public function setToken($token = null)
     {
         $this->token = $token;
-    }
-
-    /**
-     * @return int
-     */
-    public function getClientId()
-    {
-        return $this->client_id;
-    }
-
-    /**
-     * @param int $client_id
-     */
-    public function setClientId($client_id = 0)
-    {
-        $this->client_id = (int) $client_id;
     }
 
     /**
@@ -144,22 +129,20 @@ class BaseClient extends Client
     public function initialize()
     {
         // valid
-        if (!$this->getClientId() ||
-            !$this->getAccount()  ||
+        if (!$this->getAccount()  ||
             !$this->getPassword() ||
             !$this->getEndPoint()
         ) {
             throw new Exception(
-                "initialize error set config 'end_point' and 'client_id' and 'account' and 'password'."
+                "initialize error set config 'end_point' and 'account' and 'password'."
             );
         }
 
         $response = $this
             ->setPath(self::TOKEN_PATH)
-            ->setMethod("PUT")
-            ->addQuery("client_id", $this->getClientId())
-            ->addQuery("account",   $this->getAccount())
-            ->addQuery("password",  $this->getPassword())
+            ->setMethod(self::TOKEN_METHOD)
+            ->addQuery("account",  $this->getAccount())
+            ->addQuery("password", $this->getPassword())
             ->send();
 
         // set token

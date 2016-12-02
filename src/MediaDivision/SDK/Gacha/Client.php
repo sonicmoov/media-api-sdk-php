@@ -93,9 +93,18 @@ class Client extends BaseClient
 
     }
 
-    public function create()
+    /**
+     * @param  array $data
+     * @return array
+     */
+    public function create($data = array())
     {
-
+        return $this
+            ->addHeader("Authorization", $this->getToken())
+            ->setMethod("POST")
+            ->setPath("/gacha/create")
+            ->setQuery($data)
+            ->send();
     }
 
     public function update()
@@ -107,4 +116,5 @@ class Client extends BaseClient
     {
 
     }
+
 }
