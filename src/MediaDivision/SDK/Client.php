@@ -12,7 +12,7 @@ class Client extends BaseClient
     public function execute()
     {
         return $this
-            ->addHeader("Authorization", $this->getToken())
+            ->addHeader("X-Mdf-Authorization", $this->getToken())
             ->send();
     }
 }
