@@ -3,8 +3,9 @@
 namespace MediaDivision\SDK;
 
 require_once __DIR__ . "/BaseClient.php";
+require_once __DIR__ . "/ClientInterface.php";
 
-class Client extends BaseClient
+class Client extends BaseClient implements ClientInterface
 {
     /**
      * @return array

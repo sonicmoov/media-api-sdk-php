@@ -12,7 +12,7 @@
         }
     ],
     "require": {
-        "ienaga/simple-api-client": "*"
+        "ienaga/simple-api-client": "1.*"
     },
     "require-dev": {
         "phpunit/phpunit": "4.8.*"

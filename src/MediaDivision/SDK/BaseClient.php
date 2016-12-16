@@ -2,10 +2,12 @@
 
 namespace MediaDivision\SDK;
 
+require_once __DIR__ . "/BaseClientInterface.php";
+
 use \SimpleApi\Client;
 use \Exception;
 
-class BaseClient extends Client
+class BaseClient extends Client implements BaseClientInterface
 {
 
     /**
